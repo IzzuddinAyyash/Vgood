@@ -5,7 +5,7 @@ import blog3 from "../assets/blog3.png";
 
 const Blog = () => {
     return (
-        <div className="pt-8 lg:pt-20 px-4 lg:px-16">
+        <div className="pt-8 lg:pt-20 px-4 lg:px-16 mb-6">
             <h1 className="font-bold text-3xl text-center mb-8">Blog</h1>
             <div className="flex flex-col lg:flex-row justify-center lg:justify-between lg:space-x-6">
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full lg:w-80 m-2 lg:mb-0 lg:mr-2">

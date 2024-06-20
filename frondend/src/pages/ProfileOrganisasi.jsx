@@ -1,16 +1,16 @@
 import React from 'react'
 import HeaderRelawan from '../components/HeaderRelawan';
-import Profile from '../components/Profile'
+import ProfileOrganisasicomp from '../components/ProfileOrganisasicomp'
 import Footer from "../components/Footer";
 
-const ProfileRelawan = () => {
+const ProfileOrganisasi = () => {
   return ( 
     <div className="overflow-hidden">
       <HeaderRelawan />
-      <Profile />
+      <ProfileOrganisasicomp />
       <Footer />
     </div>
   )
 }
 
-export default ProfileRelawan;
+export default ProfileOrganisasi;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="p-8 bg-[#0A65CC] text-white">
+    <footer className="p-8 mt-8 bg-[#0A65CC] text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {/* Kolom Kiri */}

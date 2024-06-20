@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import BuatAkun from '../components/BuatAkun'; // Pastikan path-nya sesuai dengan lokasi file BuatAkun.js
+import BuatAkun from '../components/BuatAkun'; 
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -142,7 +142,7 @@ const Header = () => {
         </Transition>
       </nav>
 
-      {isModalOpen && <BuatAkun onClose={handleCloseModal} />} {/* Render BuatAkun jika isModalOpen true */}
+      {isModalOpen && <BuatAkun onClose={handleCloseModal} />} 
     </>
   );
 }
