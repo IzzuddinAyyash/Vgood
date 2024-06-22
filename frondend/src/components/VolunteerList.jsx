@@ -1,5 +1,6 @@
 import React from 'react';
 import VolunteerCard from '../components/VolunteerCard';
+import { Link } from 'react-router-dom';
 
 const VolunteerList = () => {
   const volunteers = [
@@ -13,7 +14,7 @@ const VolunteerList = () => {
       location: 'Kota Baru Parahyangan, Bekasi',
       skills: 'Excel, Word, Photoshop, Adobe Lightroom, Adobe Illustrator',
     },
-    // Tambahkan lebih banyak data relawan jika perlu
+    
   ];
 
   return (
@@ -29,7 +30,7 @@ const VolunteerList = () => {
         />
       ))}
       <div className="text-center mt-8">
-        <a href="#" className="text-blue-600 hover:underline">Lihat relawan lainnya</a>
+      <Link to="/CariRelawan" className="text-base underline" style={{ color: '#0A65CC' }}>Lihat Relawan Lainnya</Link>
       </div>
     </div>
   );

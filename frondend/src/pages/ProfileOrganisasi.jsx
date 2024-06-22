@@ -1,16 +1,16 @@
-import React from 'react'
-import HeaderRelawan from '../components/HeaderRelawan';
-import ProfileOrganisasicomp from '../components/ProfileOrganisasicomp'
-import Footer from "../components/Footer";
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import ProfileOrganization from '../components/ProfileOrganization'; 
 
-const ProfileOrganisasi = () => {
-  return ( 
-    <div className="overflow-hidden">
-      <HeaderRelawan />
-      <ProfileOrganisasicomp />
+const ProfilePage = () => {
+  return (
+    <div>
+      <Navbar />
+      <ProfileOrganization />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default ProfileOrganisasi;
+export default ProfilePage;

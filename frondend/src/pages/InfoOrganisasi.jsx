@@ -1,16 +1,16 @@
 import React from 'react'
 import HeaderRelawan from '../components/HeaderLogin';
-import Donasicomp from '../components/Donasicomp';
+import ProfileOrganisasicomp from '../components/ProfileOrganisasicomp'
 import Footer from "../components/Footer";
 
-const Donate = () => {
+const InfoOrganisasi = () => {
   return ( 
     <div className="overflow-hidden">
       <HeaderRelawan />
-      <Donasicomp />
+      <ProfileOrganisasicomp />
       <Footer />
     </div>
   )
 }
 
-export default Donate;
+export default InfoOrganisasi;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import HeaderRelawan from '../components/HeaderRelawan';
+import { Link } from 'react-router-dom';
+import HeaderRelawan from '../components/HeaderLogin';
 import Footer from "../components/Footer";
 import ProjectCard from '../components/ProjectCard';
 import kegiatan1 from '../assets/kegiatan1.png';
@@ -9,24 +10,28 @@ import kegiatan4 from '../assets/kegiatan4.png';
 
 const projects = [
   {
+    id: 1,
     image: kegiatan1,
     title: 'Membantu proyek konstruksi peduli iklim',
     date: '16 Mei 2024',
     location: 'Kota Parahyangan Bandung',
   },
   {
+    id: 2,
     image: kegiatan2,
     title: 'Membangun peternakan ayam',
     date: '5 Juni 2024',
     location: 'Bogor',
   },
   {
+    id: 3,
     image: kegiatan3,
     title: 'Memberikan perawatan gigi',
     date: '18 Juli 2024',
     location: 'Jakarta',
   },
   {
+    id: 4,
     image: kegiatan4,
     title: 'Mengajarkan bahasa Inggris',
     date: '19 Agustus 2024',
@@ -92,13 +97,14 @@ const CariProyek = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              image={project.image}
-              title={project.title}
-              date={project.date}
-              location={project.location}
-            />
+            <Link to='/DetailProyek' key={index}>
+              <ProjectCard
+                image={project.image}
+                title={project.title}
+                date={project.date}
+                location={project.location}
+              />
+            </Link>
           ))}
         </div>
 

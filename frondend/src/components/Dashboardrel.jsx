@@ -9,10 +9,10 @@ import relawan from '../assets/Dashboard/relawan.png';
 import jam from '../assets/Dashboard/jam.png';
 
 const Dashboardrel = () => {
-  const navigate = useNavigate(); // Updated to useNavigate
+  const navigate = useNavigate(); 
 
   const handleProfileClick = () => {
-    navigate('/Profilerelawan'); // Navigate to Profile page
+    navigate('/Profilerelawan'); 
   };
 
   return (

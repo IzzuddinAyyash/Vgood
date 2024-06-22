@@ -1,6 +1,5 @@
-// src/pages/Tentangkami.js
 import React from 'react';
-import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import tk from '../assets/tk.png';
 import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
@@ -8,7 +7,7 @@ import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 const Tentangkami = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Header />
       <div className="flex-grow flex items-center justify-center pt-20">
         <div className="flex flex-col md:flex-row items-center justify-center md:space-x-8">
           <img src={tk} alt="Tentang Kami" className="w-full md:w-1/2 lg:w-1/3 object-contain rounded-tl-xl rounded-bl-xl p-4" style={{ maxHeight: '400px' }} />

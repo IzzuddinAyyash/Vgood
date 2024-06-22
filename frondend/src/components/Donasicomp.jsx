@@ -5,7 +5,7 @@ const Donasicomp = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <div className="flex-grow flex flex-col items-center justify-center pt-20 px-4 lg:px-16">
-        {/* Bagian Gambar dan Keterangan */}
+        
         <div className="bg-white rounded-xl shadow-xl flex flex-col items-start p-6 md:p-8 mb-10 w-full md:w-4/5 lg:w-3/4">
           <h2 className="text-2xl font-bold mb-8 text-left w-full">Donasi</h2>
           <img

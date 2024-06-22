@@ -1,41 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import iconuser from '../assets/iconuser.png';
 
 const Profile = () => {
     const [profileData, setProfileData] = useState({
         name: "",
-        role: "",
-        location: "",
         phone: "",
         email: "",
-        skills: "",
+        city: "",
         bio: "",
         country: "",
         province: "",
         postalCode: "",
-        city: "",
         address: ""
     });
+    const [isLoading, setIsLoading] = useState(true);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedData, setEditedData] = useState(profileData);
 
-    const [isEditing, setIsEditing] = useState(false); 
-    const [editedData, setEditedData] = useState(profileData); 
+    useEffect(() => {
+        
+        axios.get('/api/profile')
+            .then(response => {
+                setProfileData(response.data);
+                setEditedData(response.data);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching profile data:', error);
+                setIsLoading(false);
+            });
+    }, []);
 
-  
     const handleEditClick = () => {
         setIsEditing(true);
     };
 
-    
     const handleSaveClick = () => {
-        setProfileData(editedData);
-        setIsEditing(false);
+        setIsLoading(true);
+        
+        axios.put('/api/profile', editedData)
+            .then(response => {
+                setProfileData(response.data);
+                setIsEditing(false);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error('Error saving profile data:', error);
+                setIsLoading(false);
+            });
     };
 
-    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setEditedData({ ...editedData, [name]: value });
     };
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className="min-h-screen bg-gray-100 p-8 pt-16">
@@ -97,16 +120,6 @@ const Profile = () => {
                                     className="w-full p-2 border rounded"
                                 />
                             </div>
-                            <div>
-                                <label className="font-semibold">Kemampuan</label>
-                                <input
-                                    type="text"
-                                    name="skills"
-                                    value={editedData.skills}
-                                    onChange={handleChange}
-                                    className="w-full p-2 border rounded"
-                                />
-                            </div>
                             <div className="col-span-2">
                                 <label className="font-semibold">Bio</label>
                                 <textarea
@@ -135,10 +148,6 @@ const Profile = () => {
                             <div>
                                 <p className="font-semibold">Alamat Email</p>
                                 <p>{profileData.email}</p>
-                            </div>
-                            <div>
-                                <p className="font-semibold">Kemampuan</p>
-                                <p>{profileData.skills}</p>
                             </div>
                             <div className="col-span-2">
                                 <p className="font-semibold">Bio</p>
@@ -232,6 +241,6 @@ const Profile = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Profile;

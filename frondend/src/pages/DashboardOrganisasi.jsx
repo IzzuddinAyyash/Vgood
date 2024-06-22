@@ -1,13 +1,13 @@
 import React from 'react'
-import HeaderRelawan from '../components/HeaderRelawan';
-import Dashboardrel from '../components/Dashboardrel'
+import HeaderOrganisasi from '../components/HeaderOrganisasi';
+import DashboardOrganisasi from '../components/DashboardOrganisasi';
 import Footer from "../components/Footer";
 
 const Dashboardrelawan = () => {
   return ( 
     <div className="overflow-hidden">
-      <HeaderRelawan />
-      <Dashboardrel />
+      <HeaderOrganisasi />
+      <DashboardOrganisasi />
       <Footer />
     </div>
   )

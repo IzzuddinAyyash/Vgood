@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import iconorganisasi from '../assets/iconorganisasi.png';
-import organisasi1 from '../assets/organisasi1.png';
-import tanggapan from '../assets/tanggapan.png';
-import diskusi from '../assets/diskusi.png';
-import edukasi from '../assets/edukasi.png';
-import article from '../assets/Dashboard/article.png';
-import proyek from '../assets/Dashboard/proyek.png';
-import relawan from '../assets/Dashboard/relawan.png';
-import jam from '../assets/Dashboard/jam.png';
+import iconuser from '../assets/iconuser.png';
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
-const CariOrganisasi = () => {
+const relawanList = [
+  {
+    name: "Fuad",
+    location: "Kota Baru Parahyangan, Cimahi",
+    skills: "Excel, Word, Photoshop, Adobe Lightroom, Adobe Illustrator"
+  },
+  {
+    name: "Erbie",
+    location: "Kota Baru, Cimahi",
+    skills: "Desain, UI/UX"
+  },
+  {
+    name: "Raffasyah",
+    location: "Jakarta Timur",
+    skills: "Tenaga Medis"
+  }
+];
+
+const CariRelawan = () => {
   const [provinces, setProvinces] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchName, setSearchName] = useState("");
+  const [searchSkill, setSearchSkill] = useState("");
+  const [filteredRelawan, setFilteredRelawan] = useState(relawanList);
 
   useEffect(() => {
     fetch('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
@@ -24,131 +39,50 @@ const CariOrganisasi = () => {
       .catch(error => console.error('Error fetching provinces:', error));
   }, []);
 
+  const handleSearch = () => {
+    const filtered = relawanList.filter(relawan => {
+      const nameMatch = relawan.name.toLowerCase().includes(searchName.toLowerCase());
+      const skillMatch = relawan.skills.toLowerCase().includes(searchSkill.toLowerCase());
+      return nameMatch && skillMatch;
+    });
+    setFilteredRelawan(filtered);
+  };
+
+  const handleReset = () => {
+    setSearchName("");
+    setSearchSkill("");
+    setFilteredRelawan(relawanList);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8 pt-16">
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-left text-gray-800 mb-8">Cari Organisasi</h1>
+    <div className="min-h-screen bg-gray-100 p-8 pt-16 flex flex-col">
+      <main className="container mx-auto px-4 py-8 flex-grow">
+        <h1 className="text-3xl font-bold text-left text-gray-800 mb-8">Cari Relawan</h1>
         <div className="flex flex-col md:flex-row md:space-x-8">
           <div className="md:w-2/3 space-y-4 mt-4 md:mt-0">
-            <Link to="/Profileorganisasi" className="block">
-              <div className="bg-white p-4 rounded-md shadow-lg flex items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-                <img src={iconorganisasi} alt="" className="w-14 h-14 rounded-md mr-4" />
-                <div>
-                  <h3 className="text-lg font-bold">FYP Media</h3>
-                  <p className="text-gray-600">Kota Baru Parahyangan, Cimahi</p>
-                  <div className="pt-2">
-                    <div className="flex items-center mb-2">
-                      <img src={article} alt="Artikel" className="w-5 h-5 mr-2" />
-                      <p className="text-gray-600">Artikel</p>
-                    </div>
-                    <div className="flex items-center text-gray-600 space-x-4">
-                      <div className="flex items-center">
-                        <img src={proyek} alt="Proyek" className="w-4 h-4 mr-1" />
-                        <span>2 Proyek</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={relawan} alt="Relawan" className="w-4 h-4 mr-1" />
-                        <span>4 Relawan</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={jam} alt="Jam" className="w-4 h-4 mr-1" />
-                        <span>2 Jam</span>
+            {filteredRelawan.length > 0 ? (
+              filteredRelawan.map((relawan, index) => (
+                <Link to="/ProfileRelawan" className="block" key={index}>
+                  <div className="bg-white p-4 rounded-md shadow-lg flex items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200">
+                    <img src={iconuser} alt="" className="w-14 h-14 rounded-md mr-4" />
+                    <div>
+                      <h3 className="text-lg font-bold">{relawan.name}</h3>
+                      <p className="text-gray-600">{relawan.location}</p>
+                      <div className="pt-2">
+                        <div className="flex items-center mb-2">
+                          <p className="text-gray-600">Keahlian :</p>
+                        </div>
+                        <div className="flex items-center text-gray-600 space-x-4">
+                          <p className="text-gray-400 font-thin">{relawan.skills}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/profile-organisasi" className="block">
-              <div className="bg-white p-4 rounded-md shadow-lg flex items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-                <img src={tanggapan} alt="" className="w-14 h-14 rounded-md mr-4" />
-                <div>
-                  <h3 className="text-lg font-bold">FYP Media</h3>
-                  <p className="text-gray-600">Kota Baru, Cimahi</p>
-                  <div className="pt-2">
-                    <div className="flex items-center mb-2">
-                      <img src={diskusi} alt="Artikel" className="w-5 h-5 mr-2" />
-                      <p className="text-gray-600">Diskusi</p>
-                    </div>
-                    <div className="flex items-center text-gray-600 space-x-4">
-                      <div className="flex items-center">
-                        <img src={proyek} alt="Proyek" className="w-4 h-4 mr-1" />
-                        <span>1 Proyek</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={relawan} alt="Relawan" className="w-4 h-4 mr-1" />
-                        <span>3 Relawan</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={jam} alt="Jam" className="w-4 h-4 mr-1" />
-                        <span>3 Jam</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/profile-organisasi" className="block">
-              <div className="bg-white p-4 rounded-md shadow-lg flex items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-                <img src={organisasi1} alt="" className="w-14 h-14 rounded-md mr-4" />
-                <div>
-                  <h3 className="text-lg font-bold">FYP Media</h3>
-                  <p className="text-gray-600">Kota Baru Parahyangan, Cimahi</p>
-                  <div className="pt-2">
-                    <div className="flex items-center mb-2">
-                      <img src={edukasi} alt="Artikel" className="w-5 h-5 mr-2" />
-                      <p className="text-gray-600">Edukasi</p>
-                    </div>
-                    <div className="flex items-center text-gray-600 space-x-4">
-                      <div className="flex items-center">
-                        <img src={proyek} alt="Proyek" className="w-4 h-4 mr-1" />
-                        <span>2 Proyek</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={relawan} alt="Relawan" className="w-4 h-4 mr-1" />
-                        <span>4 Relawan</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={jam} alt="Jam" className="w-4 h-4 mr-1" />
-                        <span>2 Jam</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/profile-organisasi" className="block">
-              <div className="bg-white p-4 rounded-md shadow-lg flex items-center cursor-pointer hover:bg-gray-100 transition-colors duration-200">
-                <img src={tanggapan} alt="" className="w-14 h-14 rounded-md mr-4" />
-                <div>
-                  <h3 className="text-lg font-bold">FYP Media</h3>
-                  <p className="text-gray-600">Kota Baru Parahyangan, Cimahi</p>
-                  <div className="pt-2">
-                    <div className="flex items-center mb-2">
-                      <img src={diskusi} alt="Artikel" className="w-5 h-5 mr-2" />
-                      <p className="text-gray-600">diskusi</p>
-                    </div>
-                    <div className="flex items-center text-gray-600 space-x-4">
-                      <div className="flex items-center">
-                        <img src={proyek} alt="Proyek" className="w-4 h-4 mr-1" />
-                        <span>2 Proyek</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={relawan} alt="Relawan" className="w-4 h-4 mr-1" />
-                        <span>4 Relawan</span>
-                      </div>
-                      <div className="flex items-center">
-                        <img src={jam} alt="Jam" className="w-4 h-4 mr-1" />
-                        <span>2 Jam</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
+                </Link>
+              ))
+            ) : (
+              <p className="text-center text-gray-600">Tidak ada relawan yang ditemukan.</p>
+            )}
 
             <div className="flex justify-center mt-4">
               <nav className="flex space-x-2">
@@ -160,19 +94,23 @@ const CariOrganisasi = () => {
               </nav>
             </div>
           </div>
-          <div className="md:w-1/3 bg-white p-4 rounded-md shadow-lg flex-grow ">
+          <div className="md:w-1/3 bg-white p-4 rounded-md shadow-lg flex-grow">
             <form className="flex flex-col h-full">
-              <div className="mb-4 flex">
-                <div className="w-full mr-2">
-                  <label className="block text-gray-700 mb-2" htmlFor="search">Cari Organisasi</label>
-                  <input type="text" id="search" className="w-full px-3 py-2 border rounded-md" placeholder="Cari Organisasi..." />
-                </div>
-                <div className="w-1/4">
-                  <button type="button" className="w-full bg-blue-500 text-white py-2 mt-8 rounded-md">Cari</button>
+              <div className="mb-4">
+                <div className="w-full">
+                  <label className="block text-gray-700 mb-2" htmlFor="searchName">Nama</label>
+                  <input
+                    type="text"
+                    id="searchName"
+                    className="w-full px-3 py-2 border rounded-md"
+                    placeholder="Cari inisial nama"
+                    value={searchName}
+                    onChange={(e) => setSearchName(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2" htmlFor="location">Lokasi Organisasi</label>
+                <label className="block text-gray-700 mb-2" htmlFor="location">Lokasi</label>
                 <select id="location" className="w-full px-3 py-2 border rounded-md">
                   <option>Pilih Lokasi...</option>
                   {loading ? (
@@ -187,19 +125,34 @@ const CariOrganisasi = () => {
                 </select>
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700 mb-2" htmlFor="category">Kategori Organisasi</label>
-                <select id="category" className="w-full px-3 py-2 border rounded-md">
-                  <option>Pilih Kategori Organisasi...</option>
-                </select>
+                <label className="block text-gray-700 mb-2" htmlFor="searchSkill">Keahlian</label>
+                <input
+                  type="text"
+                  id="searchSkill"
+                  className="w-full px-3 py-2 border rounded-md"
+                  placeholder="Cari berdasarkan keahlian"
+                  value={searchSkill}
+                  onChange={(e) => setSearchSkill(e.target.value)}
+                />
               </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2" htmlFor="focus">Fokus Organisasi</label>
-                <select id="focus" className="w-full px-3 py-2 border rounded-md">
-                  <option>Pilih Fokus Organisasi...</option>
-                </select>
+
+              <div>
+                <button
+                  type="button"
+                  className="w-full bg-[#0A65CC] text-white py-2 rounded-md"
+                  onClick={handleSearch}
+                >
+                  Cari
+                </button>
               </div>
-              <div className="">
-                <button type="button" className="w-full bg-blue-500 text-white py-2 rounded-md">Refresh</button>
+              <div>
+                <button
+                  type="button"
+                  className="w-full bg-[#0A65CC] text-white py-2 rounded-md mt-4"
+                  onClick={handleReset}
+                >
+                  Refresh
+                </button>
               </div>
             </form>
           </div>
@@ -209,4 +162,4 @@ const CariOrganisasi = () => {
   );
 };
 
-export default CariOrganisasi;
+export default CariRelawan;

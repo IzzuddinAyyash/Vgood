@@ -1,6 +1,5 @@
 import React from 'react'
-import Header from '../components/Header';
-import Home from "../components/Home";
+import HeaderOrganisasi from '../components/HeaderOrganisasi';
 import Keunggulan from "../components/Tanggapan";
 import Footer from "../components/Footer";
 import Blog from "../components/Blog";
@@ -8,12 +7,13 @@ import Relawan from "../assets/relawan.png"
 import Donasi from "../assets/donasi.png"
 import { Link } from "react-router-dom";
 import VolunteerList from '../components/VolunteerList';
+import HomeOrganisasi from '../components/HomeOrganisasi';
 
 const Lporganisasi = () => {
   return ( 
     <div className="overflow-hidden">
-      <Header />
-      <Home />
+      <HeaderOrganisasi />
+      <HomeOrganisasi />
       <div className="pt-20 px-4 lg:px-16">
       <div className="flex flex-wrap justify-center gap-20">
         <div className="w-full sm:w-64 md:w-60 lg:w-60 bg-white rounded-2xl shadow-xl flex flex-col items-center text-center p-6 mt-4 ">
