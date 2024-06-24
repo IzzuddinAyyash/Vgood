@@ -236,8 +236,8 @@ const Header = ({ isLoggedIn, onLogout }) => {
               </Menu>
             ) : (
               <>
-                <button onClick={handleDaftarClick} className="bg-blue-500 text-white font-semi-bold px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none">Daftar</button>
-                <Link to="/Login" className="bg-white text-blue-500 font-semi-bold px-4 py-2 rounded-full hover:bg-gray-100 focus:outline-none">Masuk</Link>
+                <button onClick={handleDaftarClick} className="bg-transparent border border-white text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none">Daftar</button>
+                <Link to="/Login" className="bg-transparent border border-white text-white font-semibold px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none">Masuk</Link>
               </>
             )}
           </div>

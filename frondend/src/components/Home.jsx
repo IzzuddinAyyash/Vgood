@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header';
+import BergabungHome from './BergabungHome';
 import Page from './Page';
 import Kegiatan from './Kegiatan';
 import Blog from './Blog';
@@ -21,6 +22,7 @@ const Home = ({ isLoggedIn, onLogout }) => {
   return (
     <div className="overflow-hidden">
       <Header isLoggedIn={isLoggedIn} onLogout={onLogout} onDaftarClick={handleDaftarClick} />
+      <BergabungHome />
       <Page />
       <Kegiatan />
       <Blog />
