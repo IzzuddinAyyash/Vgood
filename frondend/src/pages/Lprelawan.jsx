@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header'; 
+import HeaderLogin from '../components/HeaderLogin'; 
 import Homerel from "../components/Homerel";
 import { Link } from "react-router-dom";
 import Kegiatan from "../components/Kegiatan";
@@ -13,7 +13,7 @@ import Donasi from "../assets/donasi.png";
 const Lprelawan = () => {
   return (
     <div className="overflow-hidden">
-      <Header /> 
+      <HeaderLogin /> 
       <Homerel />
       <div className="pt-20 px-4 lg:px-16">
         <div className="flex flex-wrap justify-center gap-20">

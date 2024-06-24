@@ -3,17 +3,19 @@ import { FaUserGroup, FaListCheck } from 'react-icons/fa6';
 import { GrAnnounce } from 'react-icons/gr'; 
 
 const DashboardOrganisasi = () => {
-  // Contoh data relawan yang mendaftar (dapat diambil dari state atau props, sesuaikan dengan kebutuhan)
   const [relawanList, setRelawanList] = useState([
-    { id: 1, nama: 'John Doe', email: 'john.doe@example.com', noHp: '08123456789', alamat: 'Jl. Raya No. 123', status: 'Menunggu seleksi' },
-    { id: 2, nama: 'Jane Smith', email: 'jane.smith@example.com', noHp: '087654321', alamat: 'Jl. Kembang No. 45', status: 'Diterima' },
-    { id: 3, nama: 'Michael Johnson', email: 'michael.johnson@example.com', noHp: '08987654321', alamat: 'Jl. Anggrek No. 78', status: 'Menunggu seleksi' },
+    { id: 1, nama: 'El Gasing', email: 'El.Gasing@example.com', noHp: '08123456789', alamat: 'Jl. Raya No. 123', status: 'Menunggu seleksi' },
+    { id: 2, nama: 'El Template', email: 'El.Template@example.com', noHp: '087654321', alamat: 'Jl. Kembang No. 45', status: 'Menunggu seleksi' },
+    { id: 3, nama: 'El Bolabali', email: 'El.Bolabali@example.com', noHp: '08987654321', alamat: 'Jl. Anggrek No. 78', status: 'Menunggu seleksi' },
+    { id: 4, nama: 'El Mangrove', email: 'El.Mangrove@example.com', noHp: '08987654321', alamat: 'Jl. Anggrek No. 78', status: 'Menunggu seleksi' },
   ]);
 
-  // Function untuk menangani aksi terima relawan
+  const [totalRelawanDiproses, setTotalRelawanDiproses] = useState(0);
+
   const handleTerimaRelawan = (id) => {
     const updatedRelawanList = relawanList.map(relawan => {
       if (relawan.id === id) {
+        setTotalRelawanDiproses(prevCount => prevCount + 1);
         return { ...relawan, status: 'Diterima' };
       }
       return relawan;
@@ -21,9 +23,14 @@ const DashboardOrganisasi = () => {
     setRelawanList(updatedRelawanList);
   };
 
-  // Function untuk menangani aksi tolak relawan
   const handleTolakRelawan = (id) => {
-    const updatedRelawanList = relawanList.filter(relawan => relawan.id !== id);
+    const updatedRelawanList = relawanList.map(relawan => {
+      if (relawan.id === id) {
+        setTotalRelawanDiproses(prevCount => prevCount + 1);
+        return { ...relawan, status: 'Ditolak' };
+      }
+      return relawan;
+    });
     setRelawanList(updatedRelawanList);
   };
 
@@ -53,16 +60,16 @@ const DashboardOrganisasi = () => {
             <h2 className="text-xl font-semibold mb-4">Briefing Relawan</h2>
             <div className="flex items-center mb-4 m-5">
               <GrAnnounce className="w-20 h-16" color="#0A65CC" />
-              <p className="text-4xl font-bold text-gray-500 ml-5">129</p> 
+              <p className="text-4xl font-bold text-gray-500 ml-5">{totalRelawanDiproses}</p> 
             </div>
           </div>
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Relawan yang Mendaftar</h2>
+          <h2 className="text-xl font-semibold mb-4">Daftar Relawan</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white">
-              <thead className="bg-gray-200">
+              <thead className="bg-[#636364] text-white">
                 <tr>
                   <th className="border px-4 py-2">Nama</th>
                   <th className="border px-4 py-2">Email</th>
@@ -74,7 +81,7 @@ const DashboardOrganisasi = () => {
               </thead>
               <tbody>
                 {relawanList.map(relawan => (
-                  <tr key={relawan.id}>
+                  <tr key={relawan.id} className="text-black">
                     <td className="border px-4 py-2">{relawan.nama}</td>
                     <td className="border px-4 py-2">{relawan.email}</td>
                     <td className="border px-4 py-2">{relawan.noHp}</td>
@@ -85,13 +92,13 @@ const DashboardOrganisasi = () => {
                         <>
                           <button
                             onClick={() => handleTerimaRelawan(relawan.id)}
-                            className="bg-green-500 text-white px-2 py-1 rounded-lg mr-2"
+                            className="bg-[#0A65CC] text-white px-2 py-1 rounded-lg mr-2"
                           >
                             Terima
                           </button>
                           <button
                             onClick={() => handleTolakRelawan(relawan.id)}
-                            className="bg-red-500 text-white px-2 py-1 rounded-lg"
+                            className="bg-[#C20000] text-white px-2 py-1 rounded-lg"
                           >
                             Tolak
                           </button>

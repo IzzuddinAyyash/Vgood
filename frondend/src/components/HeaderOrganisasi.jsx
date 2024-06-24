@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import iconorganisasi from "../assets/iconorganisasi.png";
-import logo from "../assets/logo.png"; 
+import logo from "../assets/logo.png";
 
-const HeaderLogin = () => {
+const HeaderOrganisasi = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -35,7 +35,6 @@ const HeaderLogin = () => {
   }, []);
 
   const handleSignOut = () => {
-    
     navigate('/');
   };
 
@@ -43,7 +42,7 @@ const HeaderLogin = () => {
     <nav className={`fixed w-full z-10 ${isScrolled ? 'shadow-lg bg-[#0A65CC]' : 'bg-'}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center h-full">
         <div className="flex items-center space-x-4">
-          <img src={logo} alt="Logo" className="h-10" /> 
+          <img src={logo} alt="Logo" className="h-10" />
           <div className="md:hidden">
             <button
               type="button"
@@ -82,6 +81,7 @@ const HeaderLogin = () => {
               <div className="absolute mt-2 w-48 bg-white rounded-md shadow-lg z-20">
                 <Link to="/CariRelawan" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cari Relawan</Link>
                 <Link to="/Donate" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donasi</Link>
+                <Link to="/UploadProyekPage" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Upload Project</Link>
               </div>
             </Transition>
           </div>
@@ -113,7 +113,8 @@ const HeaderLogin = () => {
                       active && 'bg-gray-100',
                       'active:bg-gray-200 rounded-sm px-4 py-2 text-gray-700 cursor-pointer focus:bg-gray-200'
                     )}
-                  >Profile
+                  >
+                    Profile
                   </div>
                 )}
               </Menu.Item>
@@ -156,8 +157,7 @@ const HeaderLogin = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link to="/">
-              <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Beranda
-</span>
+              <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Beranda</span>
             </Link>
             <Link to="/Tentangkami">
               <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Tentang Kami</span>
@@ -168,9 +168,9 @@ const HeaderLogin = () => {
             </a>
             {isDropdownOpen && (
               <div className="px-2 pt-2 pb-3 space-y-1">
-                
                 <Link to="/CariProyek" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Cari Proyek</Link>
                 <Link to="/Donasi" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Donasi</Link>
+                <Link to="/UploadProyekPage" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500">Upload Project</Link>
               </div>
             )}
             <Link to="/Daftar">
@@ -190,4 +190,4 @@ const HeaderLogin = () => {
   );
 }
 
-export default HeaderLogin;
+export default HeaderOrganisasi;

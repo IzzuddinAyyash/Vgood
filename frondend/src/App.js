@@ -21,6 +21,8 @@ import Success from './components/Success';
 import RequestPasswordReset from './pages/RequestPasswordReset';
 import ResetPassword from './pages/ResetPassword';
 import DetailProyek from './components/DetailProyek';
+import UploadProyekPage from './pages/UploadProyekPage';
+
 
 const App = () => {
   return (
@@ -47,6 +49,8 @@ const App = () => {
         <Route path="/CariOrganisasi" element={<CariOrganisasi />} />
         <Route path="/CariRelawan" element={<CariRelawan />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/UploadProyekPage" element={<UploadProyekPage />} />
+
       </Routes>
     </div>
   );
