@@ -80,7 +80,7 @@ const HeaderOrganisasi = () => {
             >
               <div className="absolute mt-2 w-48 bg-white rounded-md shadow-lg z-20">
                 <Link to="/CariRelawan" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cari Relawan</Link>
-                <Link to="/Donate" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donasi</Link>
+                <Link to="/Donasi" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donasi</Link>
                 <Link to="/UploadProyekPage" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Upload Project</Link>
               </div>
             </Transition>

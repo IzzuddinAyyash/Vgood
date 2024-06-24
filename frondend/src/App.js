@@ -20,6 +20,7 @@ import RequestPasswordReset from './pages/RequestPasswordReset';
 import ResetPassword from './pages/ResetPassword';
 import DetailProyek from './components/DetailProyek';
 import UploadProyekPage from './pages/UploadProyekPage';
+import AboutUs from './pages/AboutUs'
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/CariRelawan" element={<CariRelawan />} />
         <Route path="/success" element={<Success />} />
         <Route path="/UploadProyekPage" element={<UploadProyekPage />} />
+        <Route path="/AboutUs" element={<AboutUs/>} />
       </Routes>
     </div>
   );
