@@ -66,7 +66,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
       <Link to="/">
         <span className="text-white font-semi-bold hover:text-blue-500">Beranda</span>
       </Link>
-      <Link to="/Tentangkami">
+      <Link to="/Login">
         <span className="text-white font-semi-bold hover:text-blue-500">Tentang Kami</span>
       </Link>
       <div className="relative">
@@ -89,7 +89,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
             <Link to="/Login" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cari Relawan</Link>
             <Link to="/Login" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cari Organisasi</Link>
             <Link to="/Login" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Cari Proyek</Link>
-            <Link to="/Donasi" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donasi</Link>
+            <Link to="/Login" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Donasi</Link>
           </div>
         </Transition>
       </div>
